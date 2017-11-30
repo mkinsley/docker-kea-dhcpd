@@ -17,3 +17,39 @@ the etc/kea and scripts/ directories are mounted into the container.
 # by default the debug.sh hook will print to STDOUT of the container
 ./run.sh
 ```
+
+
+```
+# run daemonized
+./daemon.sh
+```
+
+now you should have a running dhcp server
+
+```
+# you should see your container runnning
+docker ps
+```
+
+it should be listening on udp 67
+```
+nc  -uvz localhost 67
+```
+
+when you want to stop the container
+
+```
+docker stop my-kea-dhcpd
+```
+
+To see logs (process STDOUT)
+
+```
+docker logs my-kea-dhcpd
+````
+
+To remove the container and any volumes
+
+```
+docker rm -fv my-kea-dhcpd
+```
