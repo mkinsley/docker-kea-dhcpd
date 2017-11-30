@@ -1,0 +1,21 @@
+version: "3.3"
+services:
+  dhcpd:
+    image: mwkinsley/kea-dhcpd:2
+    volumes:
+     - ./etc/kea:/etc/kea
+     - ./scripts:/usr/local/scripts
+    ports:
+    - target: 67
+      published: 67
+      protocol: udp
+      mode: host
+    networks:
+      - ctrlnet
+  minion:
+    image: amouat/network-utils:latest 
+    command: tail -f /dev/null
+    networks:
+      - ctrlnet
+networks:
+  ctrlnet:

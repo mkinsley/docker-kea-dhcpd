@@ -53,3 +53,30 @@ To remove the container and any volumes
 ```
 docker rm -fv my-kea-dhcpd
 ```
+# Docker Compose
+
+```
+# stack.sh just calls out to docker-compose
+./stack.sh
+```
+## start compose stack
+```
+docker-compose up -d
+```
+## connect to container in stack
+```
+docker-compose exec minion /bin/bash
+```
+## get logs from container in stack
+```
+docker-compose logs dhcpd
+```
+## stop stack
+```
+docker-compose stop
+```
+
+## teardown stack
+```
+docker-compose down -v
+```
